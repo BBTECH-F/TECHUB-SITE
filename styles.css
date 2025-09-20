@@ -1,0 +1,720 @@
+/*
+ * =========================================================
+ * STYLE SHEET PARA O SITE TECHUB
+ * VERSÃO 2.20.5 - AJUSTE FINAL DO TÍTULO E SUBTÍTULO
+ * PROJETO: Festival de Ciência e Tecnologia Techub
+ * =========================================================
+ */
+
+/* ============================================== */
+/* 1. VARIÁVEIS, FONTES E ESTILOS GLOBAIS         */
+/* ============================================== */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Paleta de cores baseada na nova imagem */
+    --primary-blue: #1042c0;
+    --secondary-blue: #14234C;
+    --accent-red: #ff0000;
+    --accent-white: #FFFFFF;
+    --text-color-dark: #121212;
+
+    /* Tipografia e família de fontes */
+    --font-primary: 'Poppins', sans-serif;
+    --font-heading: 'Anton', sans-serif;
+
+    /* Tamanhos de fonte */
+    --font-size-hero: clamp(4rem, 10vw, 8rem);
+    --font-size-title: clamp(2.5rem, 6vw, 3.5rem);
+    --font-size-subtitle: 1.5rem;
+    --font-size-body: 1rem;
+    --font-size-small: 0.9rem;
+
+    /* Espaçamento e padding */
+    --padding-xxl: 120px 150px;
+    --padding-xl: 100px 120px;
+    --padding-lg: 80px 100px;
+    --padding-md: 60px;
+    --padding-sm: 40px;
+    --padding-xs: 20px;
+
+    /* Tamanhos de margem */
+    --margin-lg: 100px;
+    --margin-md: 60px;
+    --margin-sm: 30px;
+    --margin-xs: 15px;
+
+    /* Animações e transições */
+    --animation-duration: 0.8s;
+    --animation-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --hover-ease: cubic-bezier(0.2, 0.5, 0.7, 1);
+    --transition-fast: 0.3s ease-in-out;
+    --transition-medium: 0.5s var(--hover-ease);
+
+    /* Sombras e efeitos */
+    --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.2);
+    --shadow-large: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------------------------------------------- */
+/* Estilos globais e reset de elementos           */
+/* ---------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all var(--transition-fast);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-body);
+    color: var(--text-color-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    background-color: var(--primary-blue);
+    
+    /* Fundo com as linhas coloridas e topográficas */
+    background-image: url("data:image/svg+xml,%3Csvg width='1920' height='1080' viewBox='0 0 1920 1080' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid slice'%3E%3C!-- Fundo Topogr\u00e1fico --%3E%3Cdefs%3E%3Cpattern id='topo-pattern' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cpath d='M0 40h80M40 0v80' stroke='%2314234C' stroke-width='1' /%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23topo-pattern)' opacity='0.7' /%3E%3C!-- Linha Vermelha com formato diferente --%3E%3Cpath d='M-100,500 Q200,650 400,550 T700,700 T1000,550 T1300,700 T1600,550 T1920,650' stroke='%23E11C28' stroke-width='40' fill='none' /%3E%3C!-- Linha Branca com formato diferente --%3E%3Cpath d='M-100,550 C200,600 400,400 700,500 S1000,700 1300,600 S1600,400 1920,500' stroke='%23FFFFFF' stroke-width='40' fill='none' /%3E%3C/svg%3E");
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+a {
+    text-decoration: none;
+    color: var(--accent-red);
+}
+
+a:hover {
+    color: var(--accent-white);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 var(--padding-xs);
+}
+
+/* ============================================== */
+/* 2. LAYOUT E UTILS                             */
+/* ============================================== */
+.section-base {
+    padding: var(--margin-lg) 0;
+    position: relative;
+    z-index: 1;
+}
+
+.section-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.hero-content {
+    text-align: center;
+    min-height: 70vh;
+    padding-top: 150px;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-hero);
+    font-weight: 400;
+    color: var(--accent-white);
+    line-height: 1;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Tamanho do subtítulo do festival ajustado */
+.hero-subtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--accent-white);
+    margin-top: var(--margin-xs);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Título de seção com a cor vermelha de volta */
+.section-title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-title);
+    font-weight: 400;
+    color: var(--accent-red); /* Cor alterada de volta para vermelho */
+    margin-bottom: var(--margin-xs);
+    text-transform: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.centered-title {
+    text-align: center;
+}
+
+/* ============================================== */
+/* 3. ANIMAÇÕES GERAIS                            */
+/* ============================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate__fadeInUp {
+    animation-name: fadeInUp;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-delay: 0.2s;
+}
+
+/* ============================================== */
+/* 4. CAIXAS FLUTUANTES                           */
+/* ============================================== */
+.floating-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-medium);
+    padding: var(--padding-md);
+    border-radius: 20px;
+    margin: var(--margin-md) auto;
+    color: var(--accent-white);
+    animation: fadeInUp 1s forwards ease-out;
+    opacity: 0;
+    z-index: 2;
+    position: relative;
+}
+
+.floating-box p, .floating-box h3 {
+    color: var(--accent-white);
+}
+
+.floating-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.image-placeholder, .video-placeholder {
+    width: 100%;
+    height: 450px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    box-shadow: var(--shadow-medium);
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.image-placeholder:hover, .video-placeholder:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-large);
+}
+
+/* As caixas maiores (section-base) agora têm um fundo azul semi-transparente mais claro */
+.section-base .container.floating-box {
+    background-color: rgba(28, 52, 115, 0.5); /* Valor de opacidade ajustado para 0.5 */
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-large);
+}
+
+/* As caixas menores (team-card, mv-card, accordion-item) permanecem transparentes */
+.team-card, .mv-card, .accordion-item, .drive-button {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================== */
+/* 5. HEADER E NAVEGAÇÃO                          */
+/* ============================================== */
+.site-header {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    background-color: transparent;
+    padding: var(--padding-xs) 0;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-decoration: none;
+    color: var(--accent-white);
+    transition: transform var(--transition-fast);
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--accent-white);
+    font-weight: 500;
+    margin-left: var(--padding-sm);
+    position: relative;
+    padding: 10px 0;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-red);
+    transition: width 0.4s var(--hover-ease);
+}
+
+.main-nav a:hover {
+    color: var(--accent-red);
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+}
+
+.menu-toggle .bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent-white);
+    transition: all 0.3s ease;
+}
+
+/* ============================================== */
+/* 6. SEÇÕES DE CONTEÚDO                          */
+/* ============================================== */
+.content-text {
+    line-height: 1.8;
+}
+
+.content-text p + p {
+    margin-top: var(--margin-sm);
+}
+
+.sobre .section-grid {
+    grid-template-areas: "image content";
+}
+
+.sobre .image-placeholder {
+    grid-area: image;
+}
+
+.sobre .content-text {
+    grid-area: content;
+}
+
+.teams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--margin-md);
+    margin-top: var(--margin-md);
+}
+
+.team-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+    color: var(--accent-white);
+    padding: var(--padding-md);
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-large);
+}
+
+.team-photo-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    margin-bottom: var(--margin-sm);
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.team-photo-placeholder:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-large);
+}
+
+.team-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--accent-white);
+    margin-bottom: var(--margin-xs);
+}
+
+.mv-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--margin-md);
+    margin-top: var(--margin-md);
+    text-align: center;
+}
+
+.mv-card {
+    padding: var(--padding-md);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-light);
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.mv-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-large);
+}
+
+.mv-card h3 {
+    font-size: 1.5rem;
+    color: var(--accent-white);
+    font-weight: 600;
+    margin-bottom: var(--margin-xs);
+}
+
+.mv-card .card-icon {
+    font-size: 3rem;
+    color: var(--accent-red);
+    margin-bottom: var(--margin-sm);
+    transition: transform 0.5s var(--hover-ease);
+}
+
+.mv-card:hover .card-icon {
+    transform: scale(1.1);
+}
+
+.temporada .section-grid {
+    grid-template-areas: "content video";
+}
+
+.temporada .content-text {
+    grid-area: content;
+}
+
+.video-placeholder {
+    width: 100%;
+    height: 450px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    box-shadow: var(--shadow-medium);
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.video-placeholder:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-large);
+}
+
+.drive-link {
+    text-align: center;
+}
+
+.drive-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.drive-button {
+    margin-top: var(--margin-sm);
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-medium);
+    color: var(--accent-white);
+    padding: 12px 24px;
+    text-transform: uppercase;
+    font-weight: 5000;
+    font-family: var(--font-heading);
+    letter-spacing: 2px;
+    border-radius: 10px;
+    transition: background-color var(--transition-medium), transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.drive-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-large);
+}
+
+.drive-button .fab {
+    margin-right: 10px;
+}
+
+/* ============================================== */
+/* 7. SEÇÃO FAQ                                   */
+/* ============================================== */
+.faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 15px;
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+}
+
+.accordion-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--padding-xs) 25px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent-white);
+    transition: color var(--transition-medium);
+}
+
+.accordion-title:hover {
+    color: var(--accent-red);
+}
+
+.accordion-title .icon {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--accent-white);
+    transition: transform 0.3s ease;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 25px;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+}
+
+.accordion-content p {
+    padding-bottom: var(--padding-xs);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.accordion-item.active .accordion-title .icon {
+    transform: rotate(45deg);
+    color: var(--accent-red);
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 500px;
+    padding-top: 10px;
+    padding-bottom: var(--padding-xs);
+}
+
+/* ============================================== */
+/* 8. RODAPÉ (REFINADO)                           */
+/* ============================================== */
+.site-footer {
+    background-color: var(--secondary-blue);
+    color: var(--accent-white);
+    padding: var(--padding-md) 0;
+    font-size: var(--font-size-small);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--margin-md);
+    padding-bottom: var(--padding-sm);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: var(--padding-xs);
+}
+
+.footer-col {
+    flex: 1;
+}
+
+.footer-col h4 {
+    font-size: 1.2rem;
+    color: var(--accent-white);
+    margin-bottom: var(--margin-sm);
+}
+
+.footer-col .logo {
+    font-family: var(--font-heading);
+    color: var(--accent-white);
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.footer-tagline {
+    font-size: var(--font-size-small);
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: var(--margin-xs);
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color var(--transition-fast);
+}
+
+.footer-col ul li a:hover {
+    color: var(--accent-red);
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+}
+
+.social-links a {
+    color: var(--accent-white);
+    font-size: 1.5rem;
+    margin-right: var(--margin-sm);
+    transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.social-links a:last-child {
+    margin-right: 0;
+}
+
+.social-links a:hover {
+    color: var(--accent-red);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================== */
+/* 9. MEDIA QUERIES E RESPONSIVIDADE              */
+/* ============================================== */
+@media (max-width: 1024px) {
+    .section-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sobre .section-grid {
+        grid-template-areas: "content" "image";
+    }
+
+    .temporada .section-grid {
+        grid-template-areas: "content" "video";
+    }
+
+    .image-placeholder, .video-placeholder {
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-blue);
+        flex-direction: column;
+        align-items: center;
+        padding: var(--padding-xs) 0;
+        box-shadow: var(--shadow-light);
+    }
+
+    .main-nav.is-open {
+        display: flex;
+    }
+
+    .main-nav a {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .mv-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-col {
+        margin-bottom: var(--margin-md);
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer-col ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .floating-box {
+        padding: var(--padding-sm);
+    }
+}
