@@ -40,6 +40,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==============================================
+    // FUNÇÕES PARA OCULTAR/MOSTRAR FAQ
+    // ==============================================
+    const moreFaqDiv = document.getElementById('more-faq');
+    const toggleButton = document.getElementById('toggle-faq');
+
+    toggleButton.addEventListener('click', () => {
+        const isHidden = moreFaqDiv.classList.contains('is-open');
+        moreFaqDiv.classList.toggle('is-open');
+
+        if (isHidden) {
+            toggleButton.textContent = 'Mostrar mais';
+        } else {
+            toggleButton.textContent = 'Ocultar';
+        }
+    });
+
+    // ==============================================
     // OBSERVER PARA ANIMAÇÕES DE ENTRADA
     // ==============================================
     const floatingBoxes = document.querySelectorAll('.floating-box');
