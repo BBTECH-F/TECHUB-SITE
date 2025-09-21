@@ -164,6 +164,12 @@ img {
     text-align: center;
 }
 
+/* Nova classe para títulos menores na seção Temporada */
+.section-title.smaller-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: var(--margin-sm);
+}
+
 /* ============================================== */
 /* 3. ANIMAÇÕES GERAIS                            */
 /* ============================================== */
@@ -550,6 +556,82 @@ img {
     padding-bottom: var(--padding-xs);
 }
 
+/* Estilos para a nova seção de datas */
+.dates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--margin-md);
+    margin-top: var(--margin-md);
+    text-align: center;
+}
+
+.date-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-light);
+    padding: var(--padding-md);
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.date-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-large);
+}
+
+.date-icon {
+    font-size: 3rem;
+    color: var(--accent-red);
+    margin-bottom: var(--margin-xs);
+}
+
+.date-content h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--accent-white);
+}
+
+.date-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 5px;
+}
+
+/* Estilos para ocultar/exibir as perguntas do FAQ */
+#more-faq {
+    display: none;
+    animation: fadeInUp 1s forwards ease-out;
+}
+
+#more-faq.is-open {
+    display: block;
+}
+
+.toggle-faq-button {
+    display: block;
+    margin: var(--margin-sm) auto 0;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: var(--accent-white);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.toggle-faq-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
 /* ============================================== */
 /* 8. RODAPÉ (REFINADO)                           */
 /* ============================================== */
@@ -638,6 +720,7 @@ img {
     color: rgba(255, 255, 255, 0.5);
 }
 
+
 /* ============================================== */
 /* 9. MEDIA QUERIES E RESPONSIVIDADE              */
 /* ============================================== */
@@ -689,7 +772,7 @@ img {
         display: flex;
     }
     
-    .mv-grid {
+    .mv-grid, .dates-grid {
         grid-template-columns: 1fr;
     }
 
