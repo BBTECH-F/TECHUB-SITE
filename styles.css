@@ -1,7 +1,7 @@
 /*
  * =========================================================
  * STYLE SHEET PARA O SITE TECHUB
- * VERSÃO 2.30.0 - AJUSTE FINAL DO TÍTULO E SUBTÍTULO
+ * VERSÃO 2.20.5 - AJUSTE FINAL DO TÍTULO E SUBTÍTULO
  * PROJETO: Festival de Ciência e Tecnologia Techub
  * =========================================================
  */
@@ -154,7 +154,7 @@ img {
     font-family: var(--font-heading);
     font-size: var(--font-size-title);
     font-weight: 400;
-    color: var(--accent-red); /* Cor alterada de volta para vermelho */
+    color: var(--accent-red);
     margin-bottom: var(--margin-xs);
     text-transform: none;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -218,7 +218,10 @@ img {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
-.image-placeholder, .video-placeholder {
+/* ESTILOS DE IMAGEM/VÍDEO (Placeholder e Imagem Real) */
+.image-placeholder, 
+.video-placeholder,
+.image-container { /* Adicionei .image-container */
     width: 100%;
     height: 450px;
     background-color: rgba(255, 255, 255, 0.2);
@@ -226,16 +229,26 @@ img {
     border-radius: 20px;
     box-shadow: var(--shadow-medium);
     transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+    overflow: hidden; /* Garante que a imagem se ajuste ao container arredondado */
 }
 
-.image-placeholder:hover, .video-placeholder:hover {
+.image-container:hover, 
+.image-placeholder:hover, 
+.video-placeholder:hover {
     transform: scale(1.05);
     box-shadow: var(--shadow-large);
 }
 
+.section-image { /* Novo estilo para a imagem real */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem preencha o container sem distorção */
+    border-radius: 20px; /* Borda arredondada no img */
+}
+
 /* As caixas maiores (section-base) agora têm um fundo azul semi-transparente mais claro */
 .section-base .container.floating-box {
-    background-color: rgba(28, 52, 115, 0.5); /* Valor de opacidade ajustado para 0.5 */
+    background-color: rgba(28, 52, 115, 0.5);
     backdrop-filter: blur(8px);
     border: 2px solid rgba(255, 255, 255, 0.2);
     box-shadow: var(--shadow-large);
@@ -339,7 +352,7 @@ img {
     grid-template-areas: "image content";
 }
 
-.sobre .image-placeholder {
+.sobre .image-container { /* Ajuste para o novo container de imagem */
     grid-area: image;
 }
 
@@ -352,6 +365,7 @@ img {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--margin-md);
     margin-top: var(--margin-md);
+    text-align: center;
 }
 
 .team-card {
@@ -475,7 +489,7 @@ img {
     color: var(--accent-white);
     padding: 12px 24px;
     text-transform: uppercase;
-    font-weight: 5000;
+    font-weight: 500;
     font-family: var(--font-heading);
     letter-spacing: 2px;
     border-radius: 10px;
@@ -724,6 +738,11 @@ img {
 /* ============================================== */
 /* 9. MEDIA QUERIES E RESPONSIVIDADE              */
 /* ============================================== */
+/* Mudar a direção do grid para inverter a posição de imagem e texto */
+.section-grid.inverse-grid {
+    flex-direction: row-reverse;
+}
+
 @media (max-width: 1024px) {
     .section-grid {
         grid-template-columns: 1fr;
@@ -732,12 +751,17 @@ img {
     .sobre .section-grid {
         grid-template-areas: "content" "image";
     }
-
-    .temporada .section-grid {
-        grid-template-areas: "content" "video";
+    
+    .sobre .image-container { /* Ajuste para o novo container de imagem */
+        grid-area: image;
     }
 
-    .image-placeholder, .video-placeholder {
+    .temporada .section-grid,
+    .section-grid.inverse-grid {
+        flex-direction: column;
+    }
+
+    .image-container, .image-placeholder, .video-placeholder { /* Ajuste para o novo container de imagem */
         height: 300px;
     }
 }
@@ -772,7 +796,7 @@ img {
         display: flex;
     }
     
-    .mv-grid, .dates-grid {
+    .mv-grid {
         grid-template-columns: 1fr;
     }
 
@@ -801,4 +825,3 @@ img {
         padding: var(--padding-sm);
     }
 }
-
