@@ -447,12 +447,14 @@ img {
     transform: scale(1.1);
 }
 
-.temporada .section-grid {
+/* Removido o section-grid da seção temporada para simplificar o layout */
+/* .temporada .section-grid {
     grid-template-areas: "content video";
-}
+} */
 
 .temporada .content-text {
-    grid-area: content;
+    /* grid-area: content; */ /* Não é mais necessário com grid removido */
+    padding: var(--padding-xs); /* Adicionado um padding para melhor visualização */
 }
 
 .video-placeholder {
@@ -744,6 +746,7 @@ img {
 }
 
 @media (max-width: 1024px) {
+    /* Removido o ajuste para section-grid na seção 'temporada' pois ela não usa mais grid */
     .section-grid {
         grid-template-columns: 1fr;
     }
@@ -756,7 +759,7 @@ img {
         grid-area: image;
     }
 
-    .temporada .section-grid,
+    /* .temporada .section-grid,  Não se aplica mais */
     .section-grid.inverse-grid {
         flex-direction: column;
     }
