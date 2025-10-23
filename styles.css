@@ -1,7 +1,7 @@
 /*
  * =========================================================
  * STYLE SHEET PARA O SITE TECHUB
- * VERSÃO 2.20.5 - AJUSTE FINAL DO TÍTULO E SUBTÍTULO
+ * VERSÃO 2.75.0 - ATUALIZAÇÃO DE COMPATIBILIDADE DE IMAGENS
  * PROJETO: Festival de Ciência e Tecnologia Techub
  * =========================================================
  */
@@ -825,3 +825,4 @@ img {
         padding: var(--padding-sm);
     }
 }
+
