@@ -34,25 +34,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     otherItem.classList.remove('active');
                 }
             });
-            // Alterna a classe 'active' para o item clicado
+            // Alterna o estado do item clicado
             item.classList.toggle('active');
+
+            // Atualiza o atributo aria-expanded para acessibilidade
+            const isExpanded = item.classList.contains('active');
+            title.setAttribute('aria-expanded', isExpanded);
         });
     });
 
     // ==============================================
-    // FUNÇÕES PARA OCULTAR/MOSTRAR FAQ
+    // FUNÇÕES DE EXPANSÃO DO FAQ (MOSTRAR MAIS/OCULTAR)
     // ==============================================
     const moreFaqDiv = document.getElementById('more-faq');
     const toggleButton = document.getElementById('toggle-faq');
 
     toggleButton.addEventListener('click', () => {
-        const isHidden = moreFaqDiv.classList.contains('is-open');
-        moreFaqDiv.classList.toggle('is-open');
+        const isOpen = moreFaqDiv.classList.toggle('is-open');
 
-        if (isHidden) {
-            toggleButton.textContent = 'Mostrar mais';
-        } else {
+        if (isOpen) {
             toggleButton.textContent = 'Ocultar';
+            // Garante que o conteúdo seja acessível após a expansão
+            moreFaqDiv.querySelectorAll('.accordion-title').forEach(title => {
+                const item = title.closest('.accordion-item');
+                if (item.classList.contains('active')) {
+                     title.setAttribute('aria-expanded', true);
+                } else {
+                    title.setAttribute('aria-expanded', false);
+                }
+            });
+        } else {
+            toggleButton.textContent = 'Mostrar mais';
         }
     });
 
@@ -78,8 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     floatingBoxes.forEach((box, index) => {
         // Adiciona um delay diferente para cada caixa
-        box.style.animationDelay = `${index * 0.2}s`;
-        box.style.opacity = 0;
+        box.style.animationDelay = `${index * 0.1}s`; // Pequeno delay escalonado
         observer.observe(box);
     });
+
 });
